@@ -113,5 +113,31 @@ public class TierTree {
 			}
 		}
 	}
+	
+	public static void main(String[] args) {
+		TierTree sensitiveTree = new TierTree("one new tier tree");
+		String[] array1 = new String[] {"中","国"};
+		String[] array2 = new String[] {"垃","圾"};
+		String[] array3 = new String[] {"屌","丝"};
+		String[] array4 = new String[] {"国","足"};
 
+		sensitiveTree.addtoTree(array1);
+		sensitiveTree.addtoTree(array2);
+		sensitiveTree.addtoTree(array3);
+		sensitiveTree.addtoTree(array4);
+		
+		//50个中文字符
+		String sendMesage = "足球无论如何都是没法看，我都不知道自己在说什么，"
+				+ "难道是因为教练，草皮，天气，斗志，事物，体质，体制，领导，外星人"
+				+ "还是其他什么我们不知道的原因吗，反正是实在是太垃圾了";
+		
+		long runTimes = 10000;
+		long start = System.currentTimeMillis();
+		for (int i = 0; i < runTimes; i++) {
+			sensitiveTree.isSensitive(sendMesage);
+		}
+		long end = System.currentTimeMillis();
+		long usedTime = end - start;
+		System.out.println("total cost time: " + usedTime + " ms in " + runTimes + " times");
+	}
 }
